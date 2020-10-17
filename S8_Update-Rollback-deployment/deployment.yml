@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: update-demo
+  name: update-demo
+  namespace: default
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      run: update-demo
+  strategy:
+    rollingUpdate:
+      maxSurge: 1%
+      maxUnavailable: 1%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: update-demo
+    spec:
+      containers:
+        - image: jocatalin/kubernetes-bootcamp:v1
+          imagePullPolicy: IfNotPresent
+          name: update-demo
+          ports:
+          - containerPort: 8080
+            protocol: TCP
