@@ -1,0 +1,10 @@
+To expose a pod, run:
+kubectl expose pod web --port=80 --type=LoadBalancer --name=web-service
+Get ip: (note down kubernetes ip)
+kubectl get endpoints
+Get port: (note large port number to right, for web-service)
+Kubectl get service
+Now combine ip and port:
+Curl ip:port
+Clean up
+kubectl delete service web-service

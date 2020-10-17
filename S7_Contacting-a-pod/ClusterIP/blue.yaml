@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: blue
+  labels:
+    app: blue-green
+spec:
+  containers:
+    - name: blue
+      image: docker.io/mtinside/blue-green:blue
